@@ -8,6 +8,8 @@ build
 coverage
 temp
 
+*-audit.json
 *.log
 *.env
-
+.env.*
+!.env.example

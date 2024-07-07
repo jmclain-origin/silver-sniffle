@@ -1,0 +1,9 @@
+node_modules
+dist
+build
+coverage
+out
+temp
+.vscode
+*.test.ts
+tests/*

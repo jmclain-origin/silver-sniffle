@@ -6,8 +6,23 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./build"
+    "outDir": "./build",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "sourceMap": true,
+    "paths": {
+      "api/*": ["api/*"],
+      "services/*": ["api/services/*"],
+      "utils/*": ["utils/*"],
+      "controllers/*": ["api/controllers/*"],
+      "routes/*": ["api/routes/*"],
+      "helpers/*": ["utils/helpers/*"],
+      "middleware/*": ["utils/middleware/*"],
+      "vendor/*": ["utils/vendor/*"],
+      "database/*": ["services/database/*"],
+      "models/*": ["services/database/models/*"]
+    }
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "build", "dist"]
 }

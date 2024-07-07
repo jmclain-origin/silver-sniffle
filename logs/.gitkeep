@@ -1,0 +1,5 @@
+
+log files are ignored in git tracking
+keep  this file to track folder into production
+
+!NOTICE: removing this file is a breaking change
