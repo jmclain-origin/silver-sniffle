@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon",
     "start": "ts-node -r tsconfig-paths/register src/app.ts",
-    "build": "tsc",
+    "build": "tspc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint 'src/**/*.{js,ts}'",
     "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
@@ -37,8 +37,10 @@
     "prettier": "^3.3.2",
     "ts-jest": "^29.1.5",
     "ts-node": "^10.9.2",
-    "tsc": "^2.0.4",
+    "ts-patch": "^3.2.1",
+    "tsc-alias": "^1.8.10",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.5.3"
+    "typescript": "^5.5.3",
+    "typescript-transform-paths": "^3.4.7"
   }
 }

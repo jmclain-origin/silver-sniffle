@@ -1,0 +1,17 @@
+.env
+.env.example
+.eslintrc
+.eslintignore
+.prettierrc
+.prettierignore
+launch.sh
+nodemon.json
+.git
+.vscode
+__mocks__
+__tests__
+coverage
+build
+Dockerfile
+.dockerignore
+compose.yaml

@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { requestLogger } from 'utils/middleware/logger';
-import errorHandler from 'utils/middleware/errorHandler';
-import router from 'api/routes';
+import { requestLogger } from './utils/middleware/logger';
+import errorHandler from './utils/middleware/errorHandler';
+import router from '@/routes';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }

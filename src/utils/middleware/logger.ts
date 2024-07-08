@@ -56,4 +56,4 @@ const requestLogger = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-export { errorLogger, requestLogger };
+export { errorLogger, requestLogger, logger };
