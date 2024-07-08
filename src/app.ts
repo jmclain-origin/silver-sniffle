@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { requestLogger } from './utils/middleware/logger';
-import errorHandler from './utils/middleware/errorHandler';
-import router from '@/routes';
+import { requestLogger } from './api/middleware/logger';
+import errorHandler from './api/middleware/errorHandler';
+import router from '@/routes/index';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
@@ -28,3 +28,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log('Server is running on http://localhost:3000');
 });
+
+export default app;
