@@ -61,3 +61,6 @@ There are two ways to make changes to the legacy app depending on requirements w
 
 Access to the production server and database is restricted and can only be connected to on a Windows machine with [Remote Desktop Protocol (RDP)](https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol) through [ASU VPN](https://sslvpn.asu.edu/2fa)
 
+#### Instructions for connecting to RDP
+
+[legacy app connect to prod](./HOW_TO_CONNECT_LEGACY.md)
