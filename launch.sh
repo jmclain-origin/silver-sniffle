@@ -42,7 +42,8 @@ show_menu() {
     echo "1) Build docker image"
     echo "2) Remove container"
     echo "3) Create and run deattched container"
-    echo "4) Exit"
+    echo "4) Stop container"
+    echo "5) Exit"
 }
 
 build_image() {
@@ -83,6 +84,7 @@ execute_command() {
             exit 0
             ;;
         5)
+            stop_container
             ;;
         *)
             echo "Invalid option. Please try again."
