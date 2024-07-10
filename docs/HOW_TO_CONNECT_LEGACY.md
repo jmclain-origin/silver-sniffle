@@ -24,7 +24,7 @@ Requires connection from Windows 10/11 <sub>(known compatible versions with RDP)
 - **_connection settings:_**
 - **Use these RD Gateway server settings**
   - **server name:** `dept-ts.asu.edu` 
-  - **logon method:** `All me to select later`
+  - **logon method:** `Allow me to select later`
   - [x] Bypass RD Gateway server for local addresses
 
 - Confirm settings and Click "Connect"
@@ -34,7 +34,6 @@ Requires connection from Windows 10/11 <sub>(known compatible versions with RDP)
 <img src="./assets/SMS_rdp-login.jpg" height="420" />
 
 > :envelope: Check inbox for credentials
-
 
 ### Successful login
 
@@ -50,10 +49,6 @@ Webapp root directory: `C:\chem-webtools` with static content as URL paths
 is accessible at  
 `https://chem-webtools.asu.edu/webtools/index.asp`
 
-
-
-
-
 <details>
 
 <summary>
@@ -65,5 +60,35 @@ File Tree
 
 </details>
 
+## Database
 
-<!-- dept-sql17-n2.asurite.ad.asu.edu\dept_chem17,51437 and dept-sql17-n1.asurite.ad.asu.edu\dept_chem17,51437 on Chembus database -->
+Access is available as readonlu from with in the RDP environment. Production DB is hosted by ASU and is a Microsoft SQL (MSSQL) dialect.
+
+To gain readonly access open Microsoft SQL Server Management Tools 2017 by selecting the app from the Windows OS start menu.
+
+<img src='./assets/mssql-server-management-readonly.jpg' height="100" />
+
+It should automaticly connect to the database. If it doesn't you'll need the following information to connect.
+
+Database addresses: 
+
+1. `dept-sql17-n2.asurite.ad.asu.edu\dept_chem17,51437`  on Chemdept database
+2. `dept-sql17-n1.asurite.ad.asu.edu\dept_chem17,51437` on Chembus database
+
+You should only ever need the first one, Chembus is still accessible on Chemdept.
+
+The username and password are the same as used to log into the RDP and the SQL software will get them automaticily from the current logged in user.
+
+the data table are heavy and intimindating, making sense of the chaos can be challenging. In addition to the table, the is the views. It seems over the years of other developers instead of creating relationsships in the tables, someone or many used view to join data to be queried and rendered in the legacy app. For Chemdept there is over 300 tables present but only a hand full of them will be the focal point when upload new students. Another thing to be mindful of is the column labels and name casing is inconsistant across the entire DB. For example in the same upload to 3 tables you have an employee id colum, but each table will be mapped differently. `emp_id` , `EmplID` and `EMPID` will be worked with in a single query if hitting multiple tables.
+
+i grabbed lists of the table and views for the databases, they are in tab separated format
+
+[chemdept tables](./assets/Chemdept-tables-list-07092024.txt)
+
+[chemdept views](./assets/chemdept-views-list_07092024.txt)
+
+[chembus tables](./assets/chembus-table-list_07092024.txt)
+
+[chembus views](./assets/chembus-views-list_07092024.txt)
+
+[applicants tables](./assets//applicants-tables-list_07092024.txt)
