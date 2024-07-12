@@ -4,5 +4,5 @@ dist
 out
 coverage
 .vscode	
-tests
+__tests__
 *.test.ts

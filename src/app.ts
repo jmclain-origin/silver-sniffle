@@ -1,8 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { requestLogger } from './api/middleware/logger';
-import errorHandler from './api/middleware/errorHandler';
-import router from '@/routes/index';
+import { requestLogger } from '@/middleware/logger';
+import errorHandler from '@/middleware/errorHandler';
+import routes from '@/routes/index';
+import publicRoutes from '@/routes/public';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
@@ -17,16 +18,25 @@ app.use(express.urlencoded({ extended: false }));
 // Middleware
 app.use(requestLogger);
 // Routes
-app.use('/api', router);
+app.use('/', publicRoutes);
+app.use('/api', routes);
 // * Error Handler middleware must be called after routes and all other middleware
 app.use(errorHandler);
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.send('Hello World');
 });
 
 app.listen(PORT, () => {
-  console.log('Server is running on http://localhost:3000');
+  console.log(
+    'Server is running on port ' +
+      PORT +
+      ' in ' +
+      process.env.NODE_ENV +
+      ' mode on ' +
+      process.env.DEPLOY_ENV +
+      ' environment',
+  );
 });
 
 export default app;

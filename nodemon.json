@@ -3,10 +3,12 @@
   "ignore": [
     ".git",
     "node_modules/**/node_modules",
-    "**/*.test.js",
+    "**/*.test.ts",
     "**/*.log",
     "dist/**/*",
-    "build/**/*"
+    "build/**/*",
+    "out/**/*",
+    "**/__tests__/**"
   ],
   "verbose": true,
   "execMap": {
