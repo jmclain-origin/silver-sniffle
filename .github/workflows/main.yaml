@@ -44,7 +44,7 @@ jobs:
         echo $(pwd)
         ls -la
         echo 'location of node_modules'
-        ls -a ~/work
+        ls -a ~/work/silver-sniffle
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
