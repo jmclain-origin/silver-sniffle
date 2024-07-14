@@ -28,19 +28,26 @@ export const getHealthCheck = async (
   next: NextFunction,
 ) => {
   const { simulateError, dbStatus, vendorStatus } = req.query;
-
-  if (simulateError) {
-    if (process.env.NODE_ENV === 'test') {
-      throw new HttpError(500, 'Simulated Error');
-    }
-  }
   try {
     // TODO: add logic here for database and other third party services
-    const dbConnection = dbStatus;
-    const vendorService = vendorStatus;
-    if (!dbConnection) throw new HttpError(500, 'DB connection failed');
-    if (!vendorService) throw new HttpError(500, 'Vendor service failed');
-    return res.status(200).json();
+    if (dbStatus) {
+      // * pass any value to toggle check
+      // * connection status comes from params for test
+      // * pass 0 to fail and 1 to pass
+      const dbConnection = +dbStatus;
+      if (!dbConnection) throw new HttpError(500, 'DB connection failed');
+    }
+    if (vendorStatus) {
+      // * pass any value to toggle check
+      // * connection status comes from params for test
+      // * pass 0 to fail and 1 to pass
+      const vendorService = +vendorStatus;
+      if (!vendorService) throw new HttpError(500, 'Vendor service failed');
+    }
+    if (simulateError && process.env.NODE_ENV === 'test')
+      throw new HttpError(500, 'Simulated Error');
+
+    return res.status(200).json({ message: 'OK' });
   } catch (error: unknown) {
     next(error);
   }

@@ -8,17 +8,19 @@ export const getLogs = (req: Request, res: Response) => {
   const dateQuery = req.query.date as string;
   const logType = req.query.type as string;
   const reqDate = dateQuery ? moment(dateQuery, 'YYYY-MM-DD') : moment();
-  const logFileName = `${logType}-${reqDate.format('YYYY-MM-DD')}.log`;
+  let logFileName = `${logType}-${reqDate.format('YYYY-MM-DD')}.log`;
   const logFilePath = path.join(paths.LOGS_DIR, logFileName);
   const today = moment().format('YYYY-MM-DD');
   const isfileTypeValid = /^(app|err)$/i.test(logType);
-
   if (!logType || !dateQuery || !isfileTypeValid) {
     throw new HttpError(400, 'Missing required query parameters');
   }
 
   if (reqDate.diff(today, 'days') > 14) {
     throw new HttpError(400, 'Date must be within the last 14 days');
+  }
+  if (process.env.NODE_ENV === 'test') {
+    logFileName = 'test-log.log';
   }
 
   fs.access(logFilePath, fs.constants.F_OK, (err) => {
