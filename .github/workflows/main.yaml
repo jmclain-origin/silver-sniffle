@@ -44,7 +44,7 @@ jobs:
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
-        path: '$(pwd)/node-modules'
+        path: $PWD/node-modules
         key: ${{ runner.os }}-modules-${{ hashFiles('src/**') }}
 
   build:
