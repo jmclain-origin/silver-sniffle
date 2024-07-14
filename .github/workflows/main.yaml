@@ -124,7 +124,7 @@ jobs:
           path: "app.tar.gz"
           key: ${{ runner.os }}-docker-${{ hashFiles('src/**') }}
       - name: Set permissions
-        run: chmod 644 sms-clientapp.tar.gz
+        run: chmod 644 app.tar.gz
 
       # - name: Transfer bundle to host
       #   id: transfer
