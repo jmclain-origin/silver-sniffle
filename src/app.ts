@@ -23,9 +23,6 @@ app.use('/api', routes);
 // * Error Handler middleware must be called after routes and all other middleware
 app.use(errorHandler);
 
-app.get('/', (_req, res) => {
-  res.send('Hello World');
-});
 if (process.env.NODE_ENV !== 'test') {
   app.listen(PORT, () => {
     console.log(

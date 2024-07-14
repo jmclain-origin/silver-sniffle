@@ -43,7 +43,8 @@ jobs:
       run: |
         echo $(pwd)
         ls -la
-        which pnpm
+        echo 'location of node_modules'
+        ls -a ~
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
