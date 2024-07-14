@@ -44,7 +44,7 @@ jobs:
         echo $(pwd)
         ls -la
         echo 'location of node_modules'
-        ls -a ~
+        ls -a ~/work
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
