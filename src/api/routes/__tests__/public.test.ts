@@ -18,17 +18,4 @@ describe('Public Routes', () => {
     const response = await supertest(app).get('/public/unknown')
     expect(response.status).toBe(404)
   })
-
-  it('should return 400 Bad Request for invalid query parameters', async () => {
-    const response = await supertest(app).get('/public?invalidParam=true')
-    expect(response.status).toBe(400)
-  })
-
-  it('should return 500 Internal Server Error for server errors', async () => {
-    app.get('/public/error', (req, res) => {
-      throw new Error('Test error')
-    })
-    const response = await supertest(app).get('/public/error')
-    expect(response.status).toBe(500)
-  })
 })

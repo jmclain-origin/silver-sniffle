@@ -18,6 +18,11 @@ export default async (): Promise<Config> => {
       '<rootDir>/src/utils/middleware',
       '<rootDir>/src/api/controllers',
     ],
+    globals: {
+      transform: {
+        '^.+\\.ts$': ['ts-jest', { tsconfig: 'tsconfig.json' }],
+      },
+    },
     moduleNameMapper: {
       '^@src/(.*)$': '<rootDir>/src/$1',
       '^@models/(.*)$': '<rootDir>/src/services/database/models/$1',

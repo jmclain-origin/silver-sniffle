@@ -1,9 +1,9 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { requestLogger } from '@/middleware/logger';
-import errorHandler from '@/middleware/errorHandler';
-import routes from '@/routes/index';
-import publicRoutes from '@/routes/public';
+import { requestLogger } from './api/middleware/logger';
+import errorHandler from './api/middleware/errorHandler';
+import routes from './api/routes/index';
+import publicRoutes from './api/routes/public';
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
@@ -26,17 +26,18 @@ app.use(errorHandler);
 app.get('/', (_req, res) => {
   res.send('Hello World');
 });
-
-app.listen(PORT, () => {
-  console.log(
-    'Server is running on port ' +
-      PORT +
-      ' in ' +
-      process.env.NODE_ENV +
-      ' mode on ' +
-      process.env.DEPLOY_ENV +
-      ' environment',
-  );
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(
+      'Server is running on port' +
+        PORT +
+        'in' +
+        process.env.NODE_ENV +
+        'mode on' +
+        process.env.DEPLOY_ENV +
+        'environment',
+    );
+  });
+}
 
 export default app;
