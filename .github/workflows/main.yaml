@@ -30,9 +30,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'pnpm'
-        run: |
-          echo $(pwd)
-          ls -al .
     - name: Check for cached modules
       uses: actions/cache/restore@v4
       id: cache
@@ -42,6 +39,11 @@ jobs:
       if: steps.cache.outputs.cache-hit != 'true'
     - name: Installin dependencies
       run: pnpm install
+    - name: debugger
+      run: |
+        echo $(pwd)
+        ls -la
+        which pnpm
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
