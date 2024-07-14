@@ -35,23 +35,18 @@ jobs:
       id: cache
       with:
         path: 'node-modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('package.json') }}
+        key: ${{ runner.os }}-modules-${{ hashFiles('src/**') }}
       if: steps.cache.outputs.cache-hit != 'true'
     - name: Installin dependencies
       run: pnpm install
-    - name: debugger
-      run: |
-        echo $(pwd)
-        ls -la
-        echo 'location of node_modules'
-        ls -a ~/work/silver-sniffle
+    - name: Running tests
+      run: pnpm run test
     - name: Cache resoures
       uses: actions/cache/save@v4
       with:
-        path: 'node-modules'
-        key: ${{ runner.os }}-modules-${{ hashFiles('package.json') }}
-    - name: Running tests
-      run: pnpm run test
+        path: '$(pwd)/node-modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('src/**') }}
+
   build:
     runs-on: ubuntu-latest
     needs: test
