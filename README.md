@@ -26,8 +26,8 @@ In the project directory, you can run:
 
 Application builds a docker image and can be launched in a container using the following commands:
 
-- `docker build -t sms-api-server:latest .`
-- `docker run -p 3000:3000 -n chem-webtools sms-api-server:latest`
+- `docker build -t app:latest .`
+- `docker run -p 3000:3000 -n app app:latest`
 
 There is a shell script availiable to simplify the process of running the various docker cli commands required for setup and tear down of the application.
 
